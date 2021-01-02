@@ -6,7 +6,7 @@ type TextProps = {
   margin: string;
 };
 
-const SText = styled.Text<Partial<TextProps>>`
+export const SText = styled.Text<Partial<TextProps>>`
   font-size: ${({ fontSize }) => fontSize || '16px'};
   color: ${({ fontColor }) => fontColor || 'white'};
   margin: ${({ margin }) => margin || ''};
