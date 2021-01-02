@@ -4,6 +4,7 @@ type TouchableOpacityProps = {
   backgroundColor: string;
   width: string;
   margin: string;
+  padding: string;
 };
 
 export const STouchableOpacity = styled.TouchableOpacity<
@@ -11,5 +12,6 @@ export const STouchableOpacity = styled.TouchableOpacity<
 >`
   background-color: ${({ backgroundColor }) => backgroundColor || '#222'};
   width: ${({ width }) => width || '100%'};
-  margin: ${({ margin }) => margin || ''};
+  margin: ${({ margin }) => margin || '0px'};
+  padding: ${({ padding }) => padding || '0px'};
 `;
