@@ -5,6 +5,7 @@ type TouchableOpacityProps = {
   width: string;
   margin: string;
   padding: string;
+  borderRadius: string;
 };
 
 export const STouchableOpacity = styled.TouchableOpacity<
@@ -14,4 +15,5 @@ export const STouchableOpacity = styled.TouchableOpacity<
   width: ${({ width }) => width || '100%'};
   margin: ${({ margin }) => margin || '0px'};
   padding: ${({ padding }) => padding || '0px'};
+  border-radius: ${({ borderRadius }) => borderRadius || '0px'};
 `;

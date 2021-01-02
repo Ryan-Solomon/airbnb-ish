@@ -17,8 +17,14 @@ export const HomeScreen = () => {
             <SText fontSize='36px'>Go</SText>
             <SText fontSize='36px'>Near</SText>
           </STextContainer>
-          <STouchableOpacity padding='12px'>
-            <SText>Explore nearby stays</SText>
+          <STouchableOpacity
+            borderRadius='15px'
+            margin='10px 15px'
+            width='50%'
+            padding='12px'
+            backgroundColor='white'
+          >
+            <SText fontColor='#222'>Explore nearby stays</SText>
           </STouchableOpacity>
         </SImageContent>
       </ImageBackground>
@@ -43,11 +49,19 @@ const STextInput = styled.TextInput`
   background-color: white;
   height: 40px;
   margin-top: 40px;
+  align-self: center;
+  padding: 5px 15px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
 `;
 
 const SImageContent = styled.View`
-  justify-content: space-between;
+  justify-content: center;
   height: 100%;
 `;
 
-const STextContainer = styled.View``;
+const STextContainer = styled.View`
+  margin-left: 15px;
+  margin-bottom: 15px;
+`;
