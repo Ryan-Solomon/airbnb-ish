@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { searchData } from '../../assets/data/search';
+import { LocationCard } from '../components/LocationCard';
 
 export const DestinationSearch = () => {
   return (
@@ -23,7 +24,7 @@ const SContainer = styled.View``;
 const SInput = styled.TextInput`
   width: 90%;
   border-bottom-width: 1px;
-  border-color: #aaaaaa;
+  border-color: #af24f5;
   border-style: solid;
   margin: auto;
   padding: 10px;
