@@ -1,11 +1,11 @@
 import React from 'react';
-import { SearchResults } from './src/screens/SearchResults';
 import styled from 'styled-components/native';
+import { DestinationSearch } from './src/screens/DestinationSearch';
 
 export default function App() {
   return (
     <SContainer>
-      <SearchResults />
+      <DestinationSearch />
     </SContainer>
   );
 }
