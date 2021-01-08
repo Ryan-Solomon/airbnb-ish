@@ -9,22 +9,22 @@ type TProps = {
 };
 
 export const Post: FC<TProps> = ({ post }) => {
-  const { image, description, bed, bedroom, newPrice, totalPrice, type } = post;
+  const { image, title, bed, bedroom, newPrice, totalPrice, type } = post;
 
   return (
     <SContainer>
       <Image style={styles.image} source={{ uri: image }} />
       <SText margin='2px 0px' fontColor='#949494'>
-        {type} - {bed} Bed {bedroom} Bath
+        {bed} Bed {bedroom} Bath
       </SText>
       <SText fontSize='20px' margin='2px 0px' fontColor='#212121'>
-        {description.substring(0, 100)}...
+        {type} - {title}
       </SText>
       <SText margin='2px 0px' fontColor='#727272'>
-        {newPrice}/night
+        ${newPrice}/night
       </SText>
       <SText fontSize='20px' margin='2px 0px' fontColor='#383838'>
-        {totalPrice} total
+        ${totalPrice} total
       </SText>
     </SContainer>
   );
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   image: {
     resizeMode: 'cover',
     width: '100%',
-    height: 200,
+    height: 224,
     borderRadius: 15,
     marginBottom: 5,
   },

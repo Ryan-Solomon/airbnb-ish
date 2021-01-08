@@ -1,7 +1,6 @@
 import React from 'react';
-import { Post } from './src/components/Post';
-import { feedData } from './assets/data/feed';
+import { SearchResults } from './src/screens/SearchResults';
 
 export default function App() {
-  return <Post post={feedData[0]} />;
+  return <SearchResults />;
 }
