@@ -26,7 +26,7 @@ const SContainer = styled.View``;
 const SInput = styled.TextInput`
   width: 90%;
   border-bottom-width: 1px;
-  border-color: #af24f5;
+  border-color: #dc251f;
   border-style: solid;
   margin: auto;
   padding: 10px;
