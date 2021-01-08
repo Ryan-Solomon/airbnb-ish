@@ -41,6 +41,5 @@ const styles = StyleSheet.create({
 });
 
 const SContainer = styled.View`
-  margin-top: 10px;
   padding: 20px;
 `;
