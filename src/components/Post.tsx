@@ -9,16 +9,16 @@ type TProps = {
 };
 
 export const Post: FC<TProps> = ({ post }) => {
-  const { image, description, newPrice, totalPrice, type } = post;
+  const { image, description, bed, bedroom, newPrice, totalPrice, type } = post;
 
   return (
     <SContainer>
       <Image style={styles.image} source={{ uri: image }} />
       <SText margin='2px 0px' fontColor='#949494'>
-        {type}
+        {type} - {bed} Bed {bedroom} Bath
       </SText>
       <SText fontSize='20px' margin='2px 0px' fontColor='#212121'>
-        {description}
+        {description.substring(0, 100)}...
       </SText>
       <SText margin='2px 0px' fontColor='#727272'>
         {newPrice}/night
