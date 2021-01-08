@@ -9,14 +9,11 @@ type TProps = {
 };
 
 export const Post: FC<TProps> = ({ post }) => {
-  const { image, description, pricePerNight, totalPrice, type } = post;
+  const { image, description, newPrice, totalPrice, type } = post;
 
   return (
     <SContainer>
-      <Image
-        style={styles.image}
-        source={require('../../assets/images/postImg.jpg')}
-      />
+      <Image style={styles.image} source={{ uri: image }} />
       <SText margin='2px 0px' fontColor='#949494'>
         {type}
       </SText>
@@ -24,7 +21,7 @@ export const Post: FC<TProps> = ({ post }) => {
         {description}
       </SText>
       <SText margin='2px 0px' fontColor='#727272'>
-        {pricePerNight}/night
+        {newPrice}/night
       </SText>
       <SText fontSize='20px' margin='2px 0px' fontColor='#383838'>
         {totalPrice} total
