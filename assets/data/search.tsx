@@ -1,4 +1,4 @@
-export default [
+export const searchData: TSearchData[] = [
   {
     id: '0',
     description: 'Tenerife, Canary Islands',
@@ -20,3 +20,5 @@ export default [
     description: 'Tenerife, Puerto de la Cruz',
   },
 ];
+
+export type TSearchData = { id: string; description: string };

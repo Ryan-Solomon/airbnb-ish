@@ -1,10 +1,19 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
+import { searchData } from '../../assets/data/search';
 
 export const DestinationSearch = () => {
   return (
     <SContainer>
       <SInput placeholderTextColor='black' placeholder='Where are you going?' />
+      <FlatList
+        data={searchData}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          return <LocationCard searchData={item} />;
+        }}
+      />
     </SContainer>
   );
 };
