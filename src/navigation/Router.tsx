@@ -14,17 +14,17 @@ export const Router = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name={'Home'}
+          name='Home'
           component={HomeTabNavigator}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name={'DestinationSearch'}
+          name='DestinationSearch'
           component={DestinationSearch}
           options={{ title: 'Search a destination' }}
         />
         <Stack.Screen
-          name={'Guests'}
+          name='Guests'
           component={GuestsScreen}
           options={{ title: 'Who will be your guests?' }}
         />
