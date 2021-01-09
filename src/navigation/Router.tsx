@@ -5,6 +5,7 @@ import { DestinationSearch } from './../screens/DestinationSearch';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './../screens/HomeScreen';
 import { GuestsScreen } from './../screens/GuestsScreen';
+import { HomeTabNavigator } from './HomeTabNav';
 
 // Stack Navigator
 
@@ -14,6 +15,11 @@ export const Router = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name={'Home'}
+          component={HomeTabNavigator}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name={'DestinationSearch'}
           component={DestinationSearch}
@@ -30,28 +36,7 @@ export const Router = () => {
 };
 
 type RootStackParamList = {
+  Home: undefined;
   DestinationSearch: undefined;
   Guests: undefined;
-};
-
-// Tab Navigator
-
-const Tab = createBottomTabNavigator<RootTabParamList>();
-
-const TabNavigator = () => {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name='Home' component={HomeScreen} />
-        <Tab.Screen name='Home' component={HomeScreen} />
-        <Tab.Screen name='Home' component={HomeScreen} />
-        <Tab.Screen name='Home' component={HomeScreen} />
-        <Tab.Screen name='Home' component={HomeScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-};
-
-type RootTabParamList = {
-  Home: undefined;
 };
