@@ -6,7 +6,7 @@ import { SText } from '../styles/text';
 import { STouchableOpacity } from './../styles/button';
 
 export const HomeScreen = () => {
-  // const nav = useNavigation();
+  const nav = useNavigation();
 
   return (
     <SContainer>
@@ -15,7 +15,7 @@ export const HomeScreen = () => {
         style={styles.backgroundImage}
       >
         <SImageContent>
-          <STopBtn>
+          <STopBtn onPress={() => nav.navigate('DestinationSearch')}>
             <SText fontColor='#222'>Where are you going?</SText>
           </STopBtn>
           <STextContainer>
