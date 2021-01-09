@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { GuestsCounter } from '../components/GuestsCounter';
+import { SText } from '../styles/text';
+import { useNavigation } from '@react-navigation/native';
 
 const guestCategories = [
   { title: 'Adults', description: 'Ages 13 or above' },
@@ -10,6 +12,7 @@ const guestCategories = [
 ];
 
 export const GuestsScreen = () => {
+  const navigation = useNavigation();
   return (
     <SContainer>
       <FlatList
@@ -20,8 +23,24 @@ export const GuestsScreen = () => {
           return <GuestsCounter title={title} description={description} />;
         }}
       />
+      <SearchButton>
+        <SText fontColor='#ebebeb'>Search Listings</SText>
+      </SearchButton>
     </SContainer>
   );
 };
 
-const SContainer = styled.View``;
+const SContainer = styled.View`
+  flex: 1;
+`;
+
+const SearchButton = styled.TouchableOpacity`
+  background-color: #222;
+  padding: 15px;
+  width: 50%;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 60px;
+`;
