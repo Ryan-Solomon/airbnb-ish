@@ -16,4 +16,6 @@ export const STouchableOpacity = styled.TouchableOpacity<
   margin: ${({ margin }) => margin || '0px'};
   padding: ${({ padding }) => padding || '0px'};
   border-radius: ${({ borderRadius }) => borderRadius || '0px'};
+  justify-content: center;
+  align-items: center;
 `;
