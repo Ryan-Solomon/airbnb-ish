@@ -23,7 +23,16 @@ export const GuestsScreen = () => {
           return <GuestsCounter title={title} description={description} />;
         }}
       />
-      <SearchButton>
+      <SearchButton
+        onPress={() =>
+          navigation.navigate('Home', {
+            screen: 'Explore',
+            params: {
+              screen: 'SearchResults',
+            },
+          })
+        }
+      >
         <SText fontColor='#ebebeb'>Search Listings</SText>
       </SearchButton>
     </SContainer>
