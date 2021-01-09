@@ -4,6 +4,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { Router } from './ExploreNavigator';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -16,7 +17,7 @@ export const HomeTabNavigator = () => {
     >
       <Tab.Screen
         name='Explore'
-        component={HomeScreen}
+        component={Router}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='search1' size={24} color={color} />
