@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ImageBackground, Text, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
@@ -5,6 +6,8 @@ import { SText } from '../styles/text';
 import { STouchableOpacity } from './../styles/button';
 
 export const HomeScreen = () => {
+  // const nav = useNavigation();
+
   return (
     <SContainer>
       <ImageBackground
@@ -12,7 +15,9 @@ export const HomeScreen = () => {
         style={styles.backgroundImage}
       >
         <SImageContent>
-          <STextInput placeholder='Search' />
+          <STopBtn>
+            <SText fontColor='#222'>Where are you going?</SText>
+          </STopBtn>
           <STextContainer>
             <SText fontSize='36px'>Go</SText>
             <SText fontSize='36px'>Near</SText>
@@ -44,12 +49,14 @@ const styles = StyleSheet.create({
 
 const SContainer = styled.View``;
 
-const STextInput = styled.TextInput`
+const STopBtn = styled.TouchableOpacity`
   width: 95%;
   background-color: white;
-  height: 40px;
+  height: 50px;
   margin-top: 40px;
   align-self: center;
+  justify-content: center;
+  align-items: center;
   padding: 5px 15px;
   border-radius: 10px;
   position: absolute;

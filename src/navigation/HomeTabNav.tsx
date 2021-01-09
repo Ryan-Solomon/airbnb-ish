@@ -15,7 +15,7 @@ export const HomeTabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name='Explore'
+        name={'Explore'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -24,7 +24,7 @@ export const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Saved'
+        name={'Saved'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -33,7 +33,7 @@ export const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='AirBnB'
+        name={'AirBnB'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -42,7 +42,7 @@ export const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Messages'
+        name={'Messages'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -51,7 +51,7 @@ export const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Profile'
+        name={'Profile'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
