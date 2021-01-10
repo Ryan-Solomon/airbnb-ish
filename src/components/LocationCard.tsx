@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components/native';
-import { TSearchData } from '../../assets/data/search';
 import { SText } from '../styles/text';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
