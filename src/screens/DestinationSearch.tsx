@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { FlatList } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import styled from 'styled-components/native';
 import { searchData } from '../../assets/data/search';
 import { LocationCard } from '../components/LocationCard';
@@ -9,6 +10,18 @@ export const DestinationSearch = () => {
   const [searchDataState, setSearchDataState] = useState(searchData);
   return (
     <SContainer>
+      <GooglePlacesAutocomplete
+        placeholder='Search'
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(data, details);
+        }}
+        query={{
+          key: 'YOUR API KEY',
+          language: 'en',
+        }}
+      />
+
       <SInput placeholderTextColor='black' placeholder='Where are you going?' />
       <FlatList
         data={searchDataState}
