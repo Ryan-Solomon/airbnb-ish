@@ -4,13 +4,12 @@ import { TSearchData } from '../../assets/data/search';
 import { SText } from '../styles/text';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { GooglePlaceData } from 'react-native-google-places-autocomplete';
 
-type TProps = {
-  searchData: TSearchData;
-};
+type TProps = { item: GooglePlaceData };
 
-export const LocationCard: FC<TProps> = ({ searchData }) => {
-  const { description } = searchData;
+export const LocationCard: FC<TProps> = ({ item }) => {
+  const { description } = item;
   const navigation = useNavigation();
   return (
     <STouchableBtn onPress={() => navigation.navigate('Guests')}>

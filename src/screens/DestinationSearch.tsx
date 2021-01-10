@@ -24,16 +24,9 @@ export const DestinationSearch = () => {
             key: 'YOUR API KEY',
             language: 'en',
           }}
+          renderRow={(item) => <LocationCard item={item} />}
         />
       </View>
-
-      <FlatList
-        data={searchDataState}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => {
-          return <LocationCard searchData={item} />;
-        }}
-      />
     </SContainer>
   );
 };
