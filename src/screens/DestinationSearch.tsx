@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import styled from 'styled-components/native';
 import { searchData } from '../../assets/data/search';
@@ -10,19 +10,23 @@ export const DestinationSearch = () => {
   const [searchDataState, setSearchDataState] = useState(searchData);
   return (
     <SContainer>
-      <GooglePlacesAutocomplete
-        placeholder='Search'
-        onPress={(data, details = null) => {
-          // 'details' is provided when fetchDetails = true
-          console.log(data, details);
-        }}
-        query={{
-          key: 'YOUR API KEY',
-          language: 'en',
-        }}
-      />
+      <View style={{ height: 500 }}>
+        <GooglePlacesAutocomplete
+          placeholder='Where are you going?'
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(data, details);
+          }}
+          styles={{
+            textInput: styles.textInput,
+          }}
+          query={{
+            key: 'YOUR API KEY',
+            language: 'en',
+          }}
+        />
+      </View>
 
-      <SInput placeholderTextColor='black' placeholder='Where are you going?' />
       <FlatList
         data={searchDataState}
         keyExtractor={(item) => item.id}
@@ -34,16 +38,18 @@ export const DestinationSearch = () => {
   );
 };
 
-const SContainer = styled.View``;
+const styles = StyleSheet.create({
+  textInput: {
+    width: '80%',
+    borderBottomWidth: 1,
+    borderColor: '#f15454',
+    borderStyle: 'solid',
+    margin: 'auto',
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginTop: 20,
+    fontSize: 16,
+  },
+});
 
-const SInput = styled.TextInput`
-  width: 90%;
-  border-bottom-width: 1px;
-  border-color: #f15454;
-  border-style: solid;
-  margin: auto;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 40px;
-  font-size: 16px;
-`;
+const SContainer = styled.View``;
