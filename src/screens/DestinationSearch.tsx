@@ -44,6 +44,6 @@ const SInput = styled.TextInput`
   margin: auto;
   padding: 10px;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 40px;
   font-size: 16px;
 `;
