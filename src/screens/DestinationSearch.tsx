@@ -19,7 +19,7 @@ export const DestinationSearch = () => {
           textInput: styles.textInput,
         }}
         query={{
-          key: '',
+          key: 'AIzaSyAzv4SuX2PUkOUfd5WdXc4QQHEl4uR6DGY',
           language: 'en',
           type: '(cities)',
         }}

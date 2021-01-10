@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 export const SearchResultsMap = () => {
   return (
@@ -10,10 +10,12 @@ export const SearchResultsMap = () => {
         initialRegion={{
           latitude: 37,
           longitude: -122,
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.04,
+          latitudeDelta: 0.08,
+          longitudeDelta: 0.08,
         }}
-      />
+      >
+        <Marker coordinate={{ latitude: 37, longitude: -122 }} />
+      </MapView>
     </View>
   );
 };
