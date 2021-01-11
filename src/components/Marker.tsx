@@ -9,11 +9,17 @@ type Props = {
 };
 
 export const MarkerComponent: FC<Props> = ({ mark }) => {
+  const { totalPrice, coordinate } = mark;
   return (
-    <Marker coordinate={{ latitude: 37, longitude: -122 }}>
+    <Marker
+      coordinate={{
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+      }}
+    >
       <View style={styles.marker}>
         <SText padding='8px' fontColor='#d0cece'>
-          $400
+          {totalPrice}
         </SText>
       </View>
     </Marker>
