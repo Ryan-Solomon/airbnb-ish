@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import styled from 'styled-components/native';
 import { SText } from '../styles/text';
+import { feedData } from '../../assets/data/feed';
+import { MarkerComponent } from '../components/Marker';
 
 export const SearchResultsMap = () => {
   return (
@@ -16,21 +18,10 @@ export const SearchResultsMap = () => {
           longitudeDelta: 0.08,
         }}
       >
-        <Marker coordinate={{ latitude: 37, longitude: -122 }}>
-          <View style={styles.marker}>
-            <SText padding='8px' fontColor='#d0cece'>
-              $400
-            </SText>
-          </View>
-        </Marker>
+        {feedData.map((place) => {
+          return <MarkerComponent key={place.id} mark={place} />;
+        })}
       </MapView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  marker: {
-    backgroundColor: '#151515',
-    borderRadius: 10,
-  },
-});
