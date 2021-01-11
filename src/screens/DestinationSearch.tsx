@@ -4,6 +4,8 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import styled from 'styled-components/native';
 import { searchData } from '../../assets/data/search';
 import { LocationCard } from '../components/LocationCard';
+// @ts-ignore
+import { GOOGLE_API } from '@env';
 
 export const DestinationSearch = () => {
   return (
@@ -19,7 +21,7 @@ export const DestinationSearch = () => {
           textInput: styles.textInput,
         }}
         query={{
-          key: '',
+          key: GOOGLE_API,
           language: 'en',
           type: '(cities)',
         }}
