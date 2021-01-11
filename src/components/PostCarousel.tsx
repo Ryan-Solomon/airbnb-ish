@@ -50,7 +50,7 @@ const SContainer = styled.View<ContainerProps>`
 `;
 
 const ContentContainer = styled.View`
-  flex: 1;
+  /* flex: 1; */
   padding: 10px 15px;
   justify-content: space-evenly;
 `;

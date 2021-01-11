@@ -25,3 +25,5 @@ type SearchResultsTabTypes = {
   List: undefined;
   Map: undefined;
 };
+
+// Prevent swipe nav
