@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import styled from 'styled-components/native';
 
 import { feedData } from '../../assets/data/feed';
 import { MarkerComponent } from '../components/Marker';
+import { PostCarousel } from '../components/PostCarousel';
 
 export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -31,6 +33,14 @@ export const SearchResultsMap = () => {
           />
         ))}
       </MapView>
+      <PostCarouselContainer>
+        <PostCarousel post={feedData[0]} />
+      </PostCarouselContainer>
     </View>
   );
 };
+
+const PostCarouselContainer = styled.View`
+  position: absolute;
+  bottom: 0;
+`;
