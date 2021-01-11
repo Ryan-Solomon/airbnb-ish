@@ -34,7 +34,13 @@ export const SearchResultsMap = () => {
         ))}
       </MapView>
       <PostCarouselContainer>
-        <PostCarousel post={feedData[0]} />
+        <FlatList
+          data={feedData}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <PostCarousel post={item} />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
       </PostCarouselContainer>
     </View>
   );

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   image: {
     resizeMode: 'cover',
     width: 150,
-    height: 150,
+    height: '100%',
     borderRadius: 15,
     marginBottom: 5,
   },
@@ -44,8 +44,9 @@ const SContainer = styled.View<ContainerProps>`
   flex-direction: row;
   width: ${({ width }) => width.toFixed(0)}px;
   background-color: #464646;
-  border-radius: 10px;
-  margin: 4px;
+  border-radius: 16px;
+  margin: 8px;
+  height: 150px;
 `;
 
 const ContentContainer = styled.View`
