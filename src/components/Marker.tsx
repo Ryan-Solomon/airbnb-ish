@@ -10,6 +10,7 @@ type Props = {
 
 export const MarkerComponent: FC<Props> = ({ mark }) => {
   const { totalPrice, coordinate } = mark;
+  console.log(coordinate);
   return (
     <Marker
       coordinate={{
@@ -19,7 +20,7 @@ export const MarkerComponent: FC<Props> = ({ mark }) => {
     >
       <View style={styles.marker}>
         <SText padding='8px' fontColor='#d0cece'>
-          {totalPrice}
+          ${totalPrice}
         </SText>
       </View>
     </Marker>

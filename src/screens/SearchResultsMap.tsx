@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import styled from 'styled-components/native';
-import { SText } from '../styles/text';
+import { View, StyleSheet, FlatList } from 'react-native';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+
 import { feedData } from '../../assets/data/feed';
 import { MarkerComponent } from '../components/Marker';
 
@@ -11,16 +10,17 @@ export const SearchResultsMap = () => {
     <View style={{ width: '100%', height: '100%' }}>
       <MapView
         style={{ width: '100%', height: '100%' }}
+        provider={PROVIDER_GOOGLE}
         initialRegion={{
-          latitude: 37,
-          longitude: -122,
+          latitude: 28.3915637,
+          longitude: -16.6291304,
           latitudeDelta: 0.08,
           longitudeDelta: 0.08,
         }}
       >
-        {feedData.map((place) => {
-          return <MarkerComponent key={place.id} mark={place} />;
-        })}
+        {feedData.map((place) => (
+          <MarkerComponent key={place.id} mark={place} />
+        ))}
       </MapView>
     </View>
   );
