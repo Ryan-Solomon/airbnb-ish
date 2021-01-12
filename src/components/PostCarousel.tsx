@@ -13,7 +13,7 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
   const windowWidth = useWindowDimensions().width;
 
   return (
-    <SContainer width={windowWidth - 100}>
+    <SContainer style={styles.container} width={windowWidth - 100}>
       <Image style={{ ...styles.image }} source={{ uri: image }} />
       <ContentContainer>
         <SText margin='2px 0px' fontColor='#d0d0d0'>
@@ -35,6 +35,17 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 15,
     marginBottom: 5,
+  },
+  container: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
   },
 });
 
