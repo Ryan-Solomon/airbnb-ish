@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, useWindowDimensions } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
 
@@ -9,6 +9,8 @@ import { PostCarousel } from '../components/PostCarousel';
 
 export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const windowWidth = useWindowDimensions().width;
+
   const setSelected = (id: string) => {
     setSelectedId(id);
   };
@@ -35,6 +37,9 @@ export const SearchResultsMap = () => {
       </MapView>
       <PostCarouselContainer>
         <FlatList
+          snapToInterval={windowWidth - 100}
+          snapToAlignment='center'
+          decelerationRate='fast'
           data={feedData}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <PostCarousel post={item} />}
