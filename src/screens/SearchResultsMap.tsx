@@ -5,7 +5,13 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { View, StyleSheet, FlatList, useWindowDimensions } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  useWindowDimensions,
+  ViewToken,
+} from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
 
@@ -14,10 +20,22 @@ import { MarkerComponent } from '../components/Marker';
 import { PostCarousel } from '../components/PostCarousel';
 import { TPost } from '../types/appTypes';
 
+type TViewableItemsCB = (info: {
+  viewableItems: ViewToken[];
+  changed: ViewToken[];
+}) => void;
+
 export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const windowWidth = useWindowDimensions().width;
   const flatListRef = useRef<FlatList<TPost>>();
+  const viewConfig = useRef({ itemVisiblePercentThreshold: 70 });
+  const onViewChanged = useRef<TViewableItemsCB>(({ viewableItems }) => {
+    if (viewableItems.length > 0) {
+      const selectedPlace = viewableItems[0].item;
+      setSelectedId(selectedPlace.id);
+    }
+  });
 
   useEffect(() => {
     if (!selectedId || !flatListRef) return;
@@ -61,6 +79,8 @@ export const SearchResultsMap = () => {
           renderItem={({ item }) => <PostCarousel post={item} />}
           horizontal
           showsHorizontalScrollIndicator={false}
+          viewabilityConfig={viewConfig.current}
+          onViewableItemsChanged={onViewChanged.current}
         />
       </PostCarouselContainer>
     </View>
