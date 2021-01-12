@@ -8,8 +8,11 @@ const Tab = createMaterialTopTabNavigator<SearchResultsTabTypes>();
 export const SearchResultsTabNavigator = () => {
   return (
     <Tab.Navigator
+      swipeEnabled={false}
       tabBarOptions={{
         activeTintColor: '#f15454',
+        scrollEnabled: false,
+
         indicatorStyle: {
           backgroundColor: '#f15454',
         },
@@ -25,5 +28,3 @@ type SearchResultsTabTypes = {
   List: undefined;
   Map: undefined;
 };
-
-// Prevent swipe nav

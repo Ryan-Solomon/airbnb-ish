@@ -12,7 +12,6 @@ type Props = {
 
 export const MarkerComponent: FC<Props> = ({ mark, onPress, isSelected }) => {
   const { totalPrice, coordinate, id } = mark;
-  console.log(coordinate);
   return (
     <Marker
       onPress={() => onPress(id)}
