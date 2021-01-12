@@ -29,6 +29,7 @@ export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const windowWidth = useWindowDimensions().width;
   const flatListRef = useRef<FlatList<TPost>>();
+  const mapRef = useRef<MapView | null>(null);
   const viewConfig = useRef({ itemVisiblePercentThreshold: 70 });
   const onViewChanged = useRef<TViewableItemsCB>(({ viewableItems }) => {
     if (viewableItems.length > 0) {
@@ -41,6 +42,15 @@ export const SearchResultsMap = () => {
     if (!selectedId || !flatListRef) return;
     const idx = feedData.findIndex((item) => item.id === selectedId);
     flatListRef?.current?.scrollToIndex({ index: idx });
+
+    const selectedPlace = feedData[idx];
+    const region = {
+      latitude: selectedPlace.coordinate.latitude,
+      longitude: selectedPlace.coordinate.longitude,
+      latitudeDelta: 0.8,
+      longitudeDelta: 0.8,
+    };
+    mapRef?.current?.animateToRegion(region);
   }, [selectedId]);
 
   const setSelected = (id: string) => {
@@ -49,6 +59,7 @@ export const SearchResultsMap = () => {
   return (
     <View style={{ width: '100%', height: '100%' }}>
       <MapView
+        ref={mapRef}
         style={{ width: '100%', height: '100%' }}
         provider={PROVIDER_GOOGLE}
         initialRegion={{
