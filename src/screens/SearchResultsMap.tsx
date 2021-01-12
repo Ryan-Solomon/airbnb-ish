@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, {
+  MutableRefObject,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { View, StyleSheet, FlatList, useWindowDimensions } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
@@ -6,10 +12,18 @@ import styled from 'styled-components/native';
 import { feedData } from '../../assets/data/feed';
 import { MarkerComponent } from '../components/Marker';
 import { PostCarousel } from '../components/PostCarousel';
+import { TPost } from '../types/appTypes';
 
 export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const windowWidth = useWindowDimensions().width;
+  const flatListRef = useRef<FlatList<TPost>>();
+
+  useEffect(() => {
+    if (!selectedId || !flatListRef) return;
+    const idx = feedData.findIndex((item) => item.id === selectedId);
+    flatListRef?.current?.scrollToIndex({ index: idx });
+  }, [selectedId]);
 
   const setSelected = (id: string) => {
     setSelectedId(id);
@@ -37,6 +51,8 @@ export const SearchResultsMap = () => {
       </MapView>
       <PostCarouselContainer>
         <FlatList
+          // @ts-ignore
+          ref={flatListRef}
           snapToInterval={windowWidth - 100}
           snapToAlignment='center'
           decelerationRate='fast'
