@@ -11,13 +11,14 @@ type Props = {
 };
 
 export const MarkerComponent: FC<Props> = ({ mark, onPress, isSelected }) => {
-  const { totalPrice, coordinate, id } = mark;
+  const { newPrice, latitude, longitude, id } = mark;
+
   return (
     <Marker
       onPress={() => onPress(id)}
       coordinate={{
-        latitude: coordinate.latitude,
-        longitude: coordinate.longitude,
+        latitude: latitude,
+        longitude: longitude,
       }}
     >
       <View
@@ -27,7 +28,7 @@ export const MarkerComponent: FC<Props> = ({ mark, onPress, isSelected }) => {
         }}
       >
         <SText padding='8px' fontColor={isSelected ? '#151515' : '#d0cece'}>
-          ${totalPrice}
+          ${newPrice}
         </SText>
       </View>
     </Marker>

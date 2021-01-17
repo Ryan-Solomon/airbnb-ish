@@ -1,24 +1,19 @@
-import React, {
-  MutableRefObject,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { API, graphqlOperation } from 'aws-amplify';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
-  StyleSheet,
   FlatList,
   useWindowDimensions,
   ViewToken,
+  Text,
 } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
-
-import { feedData } from '../../assets/data/feed';
 import { MarkerComponent } from '../components/Marker';
 import { PostCarousel } from '../components/PostCarousel';
+import { listPosts } from '../graphql/queries';
 import { TPost } from '../types/appTypes';
+import { TStatus } from './SearchResults';
 
 type TViewableItemsCB = (info: {
   viewableItems: ViewToken[];
@@ -29,6 +24,8 @@ export const SearchResultsMap = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const windowWidth = useWindowDimensions().width;
   const flatListRef = useRef<FlatList<TPost>>();
+  const [feedData, setFeedData] = React.useState<TPost[]>([]);
+  const [status, setStatus] = React.useState<TStatus>('pending');
   const mapRef = useRef<MapView | null>(null);
   const viewConfig = useRef({ itemVisiblePercentThreshold: 70 });
   const onViewChanged = useRef<TViewableItemsCB>(({ viewableItems }) => {
@@ -45,13 +42,46 @@ export const SearchResultsMap = () => {
 
     const selectedPlace = feedData[idx];
     const region = {
-      latitude: selectedPlace.coordinate.latitude,
-      longitude: selectedPlace.coordinate.longitude,
+      latitude: selectedPlace.latitude,
+      longitude: selectedPlace.longitude,
       latitudeDelta: 0.8,
       longitudeDelta: 0.8,
     };
     mapRef?.current?.animateToRegion(region);
   }, [selectedId]);
+
+  React.useEffect(() => {
+    const getPosts = async () => {
+      setStatus('pending');
+      try {
+        const res = (await API.graphql(graphqlOperation(listPosts))) as any;
+        const data = res.data.listPosts.items as TPost[];
+        setFeedData(data);
+        setStatus('fulfilled');
+      } catch (e) {
+        console.log(e.message);
+        setStatus('error');
+      }
+    };
+
+    getPosts();
+  }, []);
+
+  if (status === 'pending') {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Loading..</Text>
+      </View>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Something went wrong</Text>
+      </View>
+    );
+  }
 
   const setSelected = (id: string) => {
     setSelectedId(id);

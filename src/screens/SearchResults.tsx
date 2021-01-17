@@ -6,7 +6,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { listPosts } from '../graphql/queries';
 import { TPost } from '../types/appTypes';
 
-type TStatus = 'pending' | 'error' | 'fulfilled';
+export type TStatus = 'pending' | 'error' | 'fulfilled';
 
 export const SearchResults = () => {
   const [feedData, setFeedData] = React.useState<TPost[]>([]);

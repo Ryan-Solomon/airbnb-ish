@@ -4,12 +4,14 @@ import { TPost } from '../types/appTypes';
 import { Image, StyleSheet } from 'react-native';
 import { SText } from '../styles/text';
 
+const days = 3;
+
 type TProps = {
   post: TPost;
 };
 
 export const Post: FC<TProps> = ({ post }) => {
-  const { image, title, bed, bedroom, newPrice, totalPrice, type } = post;
+  const { image, title, bed, bedroom, newPrice, type } = post;
 
   return (
     <SContainer>
@@ -24,7 +26,7 @@ export const Post: FC<TProps> = ({ post }) => {
         ${newPrice}/night
       </SText>
       <SText fontSize='20px' margin='2px 0px' fontColor='#383838'>
-        ${totalPrice} total
+        ${newPrice * days} total
       </SText>
     </SContainer>
   );
