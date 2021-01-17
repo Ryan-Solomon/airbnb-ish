@@ -9,7 +9,7 @@ export const ProfileScreen = () => {
   };
   return (
     <ProfileContainer>
-      <LogoutButton>
+      <LogoutButton onPress={logout}>
         <ButtonText>Logout</ButtonText>
       </LogoutButton>
     </ProfileContainer>
