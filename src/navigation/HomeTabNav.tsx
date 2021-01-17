@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Router } from './ExploreNavigator';
+import { ProfileScreen } from '../screens/Profile';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -53,7 +54,7 @@ export const HomeTabNavigator = () => {
       />
       <Tab.Screen
         name='Profile'
-        component={HomeScreen}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='user' size={24} color={color} />
