@@ -11,6 +11,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
 import { MarkerComponent } from '../components/Marker';
 import { PostCarousel } from '../components/PostCarousel';
+import { useAppContext } from '../context/AppContext';
 import { listPosts } from '../graphql/queries';
 import { TPost } from '../types/appTypes';
 import { TStatus } from './SearchResults';
@@ -28,6 +29,7 @@ export const SearchResultsMap = () => {
   const [status, setStatus] = React.useState<TStatus>('pending');
   const mapRef = useRef<MapView | null>(null);
   const viewConfig = useRef({ itemVisiblePercentThreshold: 70 });
+  const { guests } = useAppContext();
   const onViewChanged = useRef<TViewableItemsCB>(({ viewableItems }) => {
     if (viewableItems.length > 0) {
       const selectedPlace = viewableItems[0].item;
@@ -54,7 +56,15 @@ export const SearchResultsMap = () => {
     const getPosts = async () => {
       setStatus('pending');
       try {
-        const res = (await API.graphql(graphqlOperation(listPosts))) as any;
+        const res = (await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          })
+        )) as any;
         const data = res.data.listPosts.items as TPost[];
         setFeedData(data);
         setStatus('fulfilled');

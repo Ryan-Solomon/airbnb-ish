@@ -14,13 +14,20 @@ export const SearchResults = () => {
   const [feedData, setFeedData] = React.useState<TPost[]>([]);
   const [status, setStatus] = React.useState<TStatus>('pending');
   const { guests } = useAppContext();
-  console.log(guests);
 
   React.useEffect(() => {
     const getPosts = async () => {
       setStatus('pending');
       try {
-        const res = (await API.graphql(graphqlOperation(listPosts))) as any;
+        const res = (await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          })
+        )) as any;
         const data = res.data.listPosts.items as TPost[];
         setFeedData(data);
         setStatus('fulfilled');
