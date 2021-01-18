@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import { GuestsCounter } from '../components/GuestsCounter';
 import { SText } from '../styles/text';
 import { useNavigation } from '@react-navigation/native';
+import { useAppContext } from '../context/AppContext';
 
 const guestCategories = [
   { title: 'Adults', description: 'Ages 13 or above' },
@@ -13,6 +14,19 @@ const guestCategories = [
 
 export const GuestsScreen = () => {
   const navigation = useNavigation();
+
+  const { setGuests } = useAppContext();
+
+  const handlePress = (direction: 'UP' | 'DOWN') => {
+    if (direction === 'UP') {
+      setGuests((c) => c + 1);
+    } else if (direction === 'DOWN') {
+      setGuests((c) => Math.max(0, c - 1));
+    } else {
+      throw new Error('direction not supported');
+    }
+  };
+
   return (
     <SContainer>
       <FlatList
@@ -20,7 +34,13 @@ export const GuestsScreen = () => {
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => {
           const { title, description } = item;
-          return <GuestsCounter title={title} description={description} />;
+          return (
+            <GuestsCounter
+              handlePress={handlePress}
+              title={title}
+              description={description}
+            />
+          );
         }}
       />
       <SearchButton

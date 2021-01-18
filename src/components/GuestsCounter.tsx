@@ -6,20 +6,15 @@ import { SText } from '../styles/text';
 type TProps = {
   title: string;
   description: string;
+  handlePress: (direction: 'UP' | 'DOWN') => void;
 };
 
-export const GuestsCounter: FC<TProps> = ({ title, description }) => {
+export const GuestsCounter: FC<TProps> = ({
+  title,
+  description,
+  handlePress,
+}) => {
   const [count, setCount] = useState(0);
-
-  const handlePress = (direction: 'UP' | 'DOWN') => {
-    if (direction === 'UP') {
-      setCount((c) => c + 1);
-    } else if (direction === 'DOWN') {
-      setCount((c) => Math.max(0, c - 1));
-    } else {
-      throw new Error('direction not supported');
-    }
-  };
 
   return (
     <SContainer>
