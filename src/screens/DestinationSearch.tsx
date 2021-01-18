@@ -12,8 +12,8 @@ export const DestinationSearch = () => {
     <SContainer>
       <GooglePlacesAutocomplete
         placeholder='Where are you going?'
+        textInputProps={{ placeholderTextColor: 'white' }}
         onPress={(data, details = null) => {
-          // 'details' is provided when fetchDetails = true
           console.log(data, details);
         }}
         fetchDetails
@@ -44,9 +44,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     fontSize: 16,
+    color: '#fff',
   },
 });
 
 const SContainer = styled.View`
   flex: 1;
+  color: #fff;
+  background-color: #222;
 `;

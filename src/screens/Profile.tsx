@@ -18,12 +18,13 @@ export const ProfileScreen = () => {
 
 const ProfileContainer = styled.View`
   flex: 1;
+  background-color: #222;
   justify-content: center;
   align-items: center;
 `;
 
 const LogoutButton = styled.TouchableOpacity`
-  background-color: #222;
+  background-color: #3a3a3a;
   width: 150px;
   padding: 14px;
   align-items: center;

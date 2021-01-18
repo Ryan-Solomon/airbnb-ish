@@ -16,7 +16,7 @@ export const LocationCard: FC<TProps> = ({ item }) => {
         <SBox>
           <FontAwesome name='location-arrow' size={24} color='white' />
         </SBox>
-        <SText fontColor='#222'>{description}</SText>
+        <SText fontColor='white'>{description}</SText>
       </SContainer>
     </STouchableBtn>
   );
@@ -29,6 +29,7 @@ const SContainer = styled.View`
   flex-direction: row;
   align-items: center;
   margin: 10px;
+  color: white;
 `;
 
 const STouchableBtn = styled.TouchableOpacity``;

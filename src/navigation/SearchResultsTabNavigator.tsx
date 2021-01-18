@@ -11,6 +11,7 @@ export const SearchResultsTabNavigator = () => {
       swipeEnabled={false}
       tabBarOptions={{
         activeTintColor: '#f15454',
+
         scrollEnabled: false,
 
         indicatorStyle: {

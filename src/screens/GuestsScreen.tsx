@@ -43,10 +43,11 @@ export const GuestsScreen = () => {
 
 const SContainer = styled.View`
   flex: 1;
+  background-color: #222;
 `;
 
 const SearchButton = styled.TouchableOpacity`
-  background-color: #222;
+  background-color: #464646;
   padding: 15px;
   width: 50%;
   border-radius: 10px;

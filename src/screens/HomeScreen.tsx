@@ -41,13 +41,16 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: 500,
+    height: '100%',
     width: '100%',
     resizeMode: 'cover',
   },
 });
 
-const SContainer = styled.View``;
+const SContainer = styled.View`
+  flex: 1;
+  background-color: #222;
+`;
 
 const STopBtn = styled.TouchableOpacity`
   width: 95%;

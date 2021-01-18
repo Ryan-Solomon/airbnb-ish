@@ -17,10 +17,10 @@ export const GuestsCounter: FC<TProps> = ({ title, description }) => {
   return (
     <SContainer>
       <STextContainer>
-        <SText fontSize='20px' fontColor='#333'>
+        <SText fontSize='20px' fontColor='#ffffff'>
           {title}
         </SText>
-        <SText fontColor='#838383'>{description}</SText>
+        <SText fontColor='#c9c9c9'>{description}</SText>
       </STextContainer>
       <SCountContainer>
         <SPressableContainer>
@@ -30,17 +30,17 @@ export const GuestsCounter: FC<TProps> = ({ title, description }) => {
               setCount((c) => c + 1);
             }}
           >
-            <AntDesign name='plussquare' size={38} color='black' />
+            <AntDesign name='plussquare' size={38} color='white' />
           </SPressable>
 
-          <SText fontColor='#222'>{count}</SText>
+          <SText fontColor='#e4e4e4'>{count}</SText>
           <SPressable
             onPress={() => {
               removeGuest();
               setCount((c) => Math.max(c - 1, 0));
             }}
           >
-            <AntDesign name='minussquare' size={38} color='black' />
+            <AntDesign name='minussquare' size={38} color='white' />
           </SPressable>
         </SPressableContainer>
       </SCountContainer>
