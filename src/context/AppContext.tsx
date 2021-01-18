@@ -8,12 +8,14 @@ import React, {
 
 type TContext = {
   guests: number;
-  setGuests: React.Dispatch<React.SetStateAction<number>>;
+  addGuest: () => void;
+  removeGuest: () => void;
 };
 
 const initialContext: TContext = {
   guests: 0,
-  setGuests: () => null,
+  addGuest: () => null,
+  removeGuest: () => null,
 };
 
 const AppContext = createContext(initialContext);
@@ -21,7 +23,15 @@ const AppContext = createContext(initialContext);
 export const ContextProvider: FC<ReactNode> = ({ children }) => {
   const [guests, setGuests] = useState(0);
 
-  const appContext = { guests, setGuests };
+  const addGuest = () => {
+    setGuests((g) => g + 1);
+  };
+
+  const removeGuest = () => {
+    setGuests((g) => Math.max(0, g - 1));
+  };
+
+  const appContext = { guests, addGuest, removeGuest };
   return (
     <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
   );

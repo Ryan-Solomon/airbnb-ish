@@ -2,19 +2,17 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
 import { SText } from '../styles/text';
+import { useAppContext } from '../context/AppContext';
 
 type TProps = {
   title: string;
   description: string;
-  handlePress: (direction: 'UP' | 'DOWN') => void;
 };
 
-export const GuestsCounter: FC<TProps> = ({
-  title,
-  description,
-  handlePress,
-}) => {
-  const [count, setCount] = useState(0);
+export const GuestsCounter: FC<TProps> = ({ title, description }) => {
+  const [count, setCount] = React.useState(0);
+  const { guests, addGuest, removeGuest } = useAppContext();
+  console.log(guests);
 
   return (
     <SContainer>
@@ -26,12 +24,22 @@ export const GuestsCounter: FC<TProps> = ({
       </STextContainer>
       <SCountContainer>
         <SPressableContainer>
-          <SPressable onPress={() => handlePress('UP')}>
+          <SPressable
+            onPress={() => {
+              addGuest();
+              setCount((c) => c + 1);
+            }}
+          >
             <AntDesign name='plussquare' size={38} color='black' />
           </SPressable>
 
           <SText fontColor='#222'>{count}</SText>
-          <SPressable onPress={() => handlePress('DOWN')}>
+          <SPressable
+            onPress={() => {
+              removeGuest();
+              setCount((c) => Math.max(c - 1, 0));
+            }}
+          >
             <AntDesign name='minussquare' size={38} color='black' />
           </SPressable>
         </SPressableContainer>

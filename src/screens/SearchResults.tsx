@@ -6,12 +6,15 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { listPosts } from '../graphql/queries';
 import { TPost } from '../types/appTypes';
 import { useRoute } from '@react-navigation/native';
+import { useAppContext } from '../context/AppContext';
 
 export type TStatus = 'pending' | 'error' | 'fulfilled';
 
 export const SearchResults = () => {
   const [feedData, setFeedData] = React.useState<TPost[]>([]);
   const [status, setStatus] = React.useState<TStatus>('pending');
+  const { guests } = useAppContext();
+  console.log(guests);
 
   React.useEffect(() => {
     const getPosts = async () => {

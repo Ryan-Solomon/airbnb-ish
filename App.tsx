@@ -9,12 +9,15 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 import Amplify from 'aws-amplify';
 // @ts-ignore
 import config from './src/aws-exports';
+import { ContextProvider } from './src/context/AppContext';
 Amplify.configure(config);
 
 function App() {
   return (
     <>
-      <Router />
+      <ContextProvider>
+        <Router />
+      </ContextProvider>
     </>
   );
 }
