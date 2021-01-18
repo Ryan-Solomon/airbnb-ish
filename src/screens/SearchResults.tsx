@@ -5,6 +5,7 @@ import { FlatList, Text, View } from 'react-native';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listPosts } from '../graphql/queries';
 import { TPost } from '../types/appTypes';
+import { useRoute } from '@react-navigation/native';
 
 export type TStatus = 'pending' | 'error' | 'fulfilled';
 

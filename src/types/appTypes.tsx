@@ -9,8 +9,6 @@ export type TPost = {
   oldPrice: number;
   newPrice: number;
   totalPrice: number;
-  coordinate: {
-    latitude: number;
-    longitude: number;
-  };
+  latitude: number;
+  longitude: number;
 };

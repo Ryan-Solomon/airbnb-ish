@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { GuestsCounter } from '../components/GuestsCounter';
