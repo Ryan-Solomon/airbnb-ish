@@ -10,13 +10,16 @@ import Amplify from 'aws-amplify';
 // @ts-ignore
 import config from './src/aws-exports';
 import { ContextProvider } from './src/context/AppContext';
+import { SavedPostsContextProvider } from './src/context/savedPostsContext';
 Amplify.configure(config);
 
 function App() {
   return (
     <>
       <ContextProvider>
-        <Router />
+        <SavedPostsContextProvider>
+          <Router />
+        </SavedPostsContextProvider>
       </ContextProvider>
     </>
   );
