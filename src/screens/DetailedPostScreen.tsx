@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { DetailedPost } from '../components/DetailedPost';
 import styled from 'styled-components/native';
 
-export const DetailedPostScreen = () => {
+type Props = {
+  route: {
+    params: {
+      itemId: string;
+    };
+  };
+};
+
+export const DetailedPostScreen: FC<Props> = ({ route }) => {
+  const { itemId } = route.params;
+  console.log(itemId);
   return (
     <DetailedPostContainer>
       <DetailedPost />

@@ -45,5 +45,5 @@ type RootStackParamList = {
   Home: undefined;
   DestinationSearch: undefined;
   Guests: undefined;
-  DetailedPost: undefined;
+  DetailedPost: { itemId: string };
 };
