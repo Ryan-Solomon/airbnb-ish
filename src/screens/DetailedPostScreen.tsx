@@ -16,7 +16,7 @@ type Props = {
 
 export const DetailedPostScreen: FC<Props> = ({ route }) => {
   const { itemId } = route.params;
-  const [feedData, setFeedData] = React.useState<TPost>();
+  const [post, setPost] = React.useState<TPost>();
   const [status, setStatus] = React.useState<TStatus>('pending');
 
   React.useEffect(() => {
@@ -29,7 +29,7 @@ export const DetailedPostScreen: FC<Props> = ({ route }) => {
           })
         )) as any;
         const data = res.data.getPost as TPost;
-        setFeedData(data);
+        setPost(data);
         setStatus('fulfilled');
       } catch (e) {
         console.log(e.message);
@@ -46,7 +46,7 @@ export const DetailedPostScreen: FC<Props> = ({ route }) => {
         <LoadingText>Loading...</LoadingText>
       </LoadingContainer>
     );
-  if (status === 'error')
+  if (status === 'error' || !post)
     return (
       <LoadingContainer>
         <LoadingText>Something went wrong</LoadingText>
@@ -55,7 +55,7 @@ export const DetailedPostScreen: FC<Props> = ({ route }) => {
 
   return (
     <DetailedPostContainer>
-      <DetailedPost />
+      <DetailedPost post={post} />
     </DetailedPostContainer>
   );
 };
