@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import { TPost } from '../types/appTypes';
 import { Image, StyleSheet } from 'react-native';
 import { SText } from '../styles/text';
+import { useNavigation } from '@react-navigation/native';
 
 const days = 3;
 
@@ -11,10 +12,17 @@ type TProps = {
 };
 
 export const Post: FC<TProps> = ({ post }) => {
-  const { image, title, bed, bedroom, newPrice, type } = post;
+  const { image, title, bed, bedroom, newPrice, type, id } = post;
+  const navigation = useNavigation();
+
+  const navigateToDetailedPost = () => {
+    navigation.navigate('DetailedPost', {
+      itemId: id,
+    });
+  };
 
   return (
-    <SContainer>
+    <SContainer onPress={navigateToDetailedPost}>
       <Image style={styles.image} source={{ uri: image }} />
       <SText margin='2px 0px' fontColor='#d8d8d8'>
         {bed} Bed {bedroom} Bath
@@ -42,6 +50,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const SContainer = styled.View`
+const SContainer = styled.TouchableOpacity`
   padding: 20px;
 `;
