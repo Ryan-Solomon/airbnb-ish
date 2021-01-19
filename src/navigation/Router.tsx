@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { DestinationSearch } from './../screens/DestinationSearch';
 import { GuestsScreen } from './../screens/GuestsScreen';
 import { HomeTabNavigator } from './HomeTabNav';
+import { DetailedPostScreen } from '../screens/DetailedPostScreen';
 
 // Stack Navigator
 
@@ -28,6 +29,13 @@ export const Router = () => {
           component={GuestsScreen}
           options={{ title: 'Who will be your guests?' }}
         />
+        <Stack.Screen
+          name='DetailedPost'
+          component={DetailedPostScreen}
+          options={{
+            title: 'Search your destination',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -37,4 +45,5 @@ type RootStackParamList = {
   Home: undefined;
   DestinationSearch: undefined;
   Guests: undefined;
+  DetailedPost: undefined;
 };

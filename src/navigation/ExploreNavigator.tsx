@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens/HomeScreen';
 import { SearchResults } from '../screens/SearchResults';
 import { SearchResultsTabNavigator } from './SearchResultsTabNavigator';
+import { DetailedPostScreen } from '../screens/DetailedPostScreen';
 
 const Stack = createStackNavigator<ExploreNavigatorTypes>();
 
