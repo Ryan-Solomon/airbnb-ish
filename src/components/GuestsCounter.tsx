@@ -12,7 +12,6 @@ type TProps = {
 export const GuestsCounter: FC<TProps> = ({ title, description }) => {
   const [count, setCount] = React.useState(0);
   const { guests, addGuest, removeGuest } = useAppContext();
-  console.log(guests);
 
   return (
     <SContainer>

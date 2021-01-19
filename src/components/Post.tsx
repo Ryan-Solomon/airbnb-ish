@@ -16,16 +16,16 @@ export const Post: FC<TProps> = ({ post }) => {
   return (
     <SContainer>
       <Image style={styles.image} source={{ uri: image }} />
-      <SText margin='2px 0px' fontColor='#949494'>
+      <SText margin='2px 0px' fontColor='#d8d8d8'>
         {bed} Bed {bedroom} Bath
       </SText>
-      <SText fontSize='20px' margin='2px 0px' fontColor='#212121'>
+      <SText fontSize='20px' margin='2px 0px' fontColor='#ebebeb'>
         {type} - {title}
       </SText>
-      <SText margin='2px 0px' fontColor='#727272'>
+      <SText margin='2px 0px' fontColor='#c1c1c1'>
         ${newPrice}/night
       </SText>
-      <SText fontSize='20px' margin='2px 0px' fontColor='#383838'>
+      <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
         ${newPrice * days} total
       </SText>
     </SContainer>

@@ -67,4 +67,6 @@ export const SearchResults = () => {
   );
 };
 
-const SContainer = styled.View``;
+const SContainer = styled.View`
+  background: #222;
+`;
