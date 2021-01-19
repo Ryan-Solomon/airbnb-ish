@@ -3,17 +3,27 @@ import styled from 'styled-components/native';
 import { TPost } from '../types/appTypes';
 import { Image, StyleSheet, useWindowDimensions } from 'react-native';
 import { SText } from '../styles/text';
+import { useNavigation } from '@react-navigation/native';
 
 type TProps = {
   post: TPost;
 };
 
 export const PostCarousel: FC<TProps> = ({ post }) => {
-  const { image, title, bed, bedroom, newPrice, totalPrice, type } = post;
+  const { image, title, bed, bedroom, newPrice, totalPrice, type, id } = post;
   const windowWidth = useWindowDimensions().width;
+  const navigation = useNavigation();
 
   return (
-    <SContainer style={styles.container} width={windowWidth - 100}>
+    <SContainer
+      onPress={() =>
+        navigation.navigate('DetailedPost', {
+          itemId: id,
+        })
+      }
+      style={styles.container}
+      width={windowWidth - 100}
+    >
       <Image style={{ ...styles.image }} source={{ uri: image }} />
       <ContentContainer>
         <SText margin='2px 0px' fontColor='#d0d0d0'>
@@ -51,7 +61,7 @@ const styles = StyleSheet.create({
 
 type ContainerProps = { width: number };
 
-const SContainer = styled.View<ContainerProps>`
+const SContainer = styled.TouchableOpacity<ContainerProps>`
   flex-direction: row;
   width: ${({ width }) => width.toFixed(0)}px;
   background-color: #464646;
