@@ -16,11 +16,13 @@ const SavedPostsContext = createContext(initialContext);
 function postReducer(state, action) {
   switch (action.type) {
     case 'ADD_POST':
-      return {};
+      return { posts: [...state.posts, action.payload] };
     case 'REMOVE_POST':
-      return {};
+      return {
+        posts: [...state.posts.filter((post) => post.id !== action.payload)],
+      };
     case 'CLEAR_POSTS':
-      return {};
+      return { posts: [] };
     default:
       throw new Error(`Action type ${action.type} is not supported`);
   }
