@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components/native';
 import { TPost } from '../types/appTypes';
 import { Image, StyleSheet } from 'react-native';
@@ -17,6 +17,14 @@ export const Post: FC<TProps> = ({ post, showSaveListing = true }) => {
   const { image, title, bed, bedroom, newPrice, type, id } = post;
   const navigation = useNavigation();
   const { addPost } = useSavedPostsContext();
+  const [saved, setSaved] = useState(false);
+
+  const setSavedPost = () => {
+    setSaved(true);
+    setTimeout(() => {
+      setSaved(false);
+    }, 2000);
+  };
 
   const navigateToDetailedPost = () => {
     navigation.navigate('DetailedPost', {
@@ -41,8 +49,13 @@ export const Post: FC<TProps> = ({ post, showSaveListing = true }) => {
           ${newPrice * days} total
         </SText>
         {showSaveListing && (
-          <SavePostButton onPress={() => addPost(post)}>
-            <SText>Save Listing</SText>
+          <SavePostButton
+            onPress={() => {
+              addPost(post);
+              setSavedPost();
+            }}
+          >
+            {saved ? <SText>Saved!</SText> : <SText>Save Listing</SText>}
           </SavePostButton>
         )}
       </SaveListingContainer>
