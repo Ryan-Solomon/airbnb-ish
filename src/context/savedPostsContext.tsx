@@ -46,10 +46,12 @@ function postReducer(state: TPostState, action: TPostAction) {
   }
 }
 
-export const SavedPostsContextProvider: FC<ReactNode> = ({ children }) => {
-  const [posts, setPosts] = useReducer([]);
+const initialPosts: TPostState = {
+  posts: [],
+};
 
-  const;
+export const SavedPostsContextProvider: FC<ReactNode> = ({ children }) => {
+  const [posts, setPosts] = useReducer(postReducer, initialPosts);
 
   return (
     <SavedPostsContext.Provider value={{}}>
