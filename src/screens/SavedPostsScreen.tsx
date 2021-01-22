@@ -3,9 +3,18 @@ import styled from 'styled-components/native';
 import { useSavedPostsContext } from '../context/savedPostsContext';
 import { FlatList } from 'react-native';
 import { Post } from '../components/Post';
+import { SText } from '../styles/text';
 
 export default function SavedPostsScreen() {
   const { posts } = useSavedPostsContext();
+
+  if (posts.length === 0) {
+    return (
+      <NoPostsContainer>
+        <SText>You have no saved posts</SText>
+      </NoPostsContainer>
+    );
+  }
 
   return (
     <SavedPostsContainer>
@@ -26,5 +35,11 @@ export default function SavedPostsScreen() {
 }
 
 const SavedPostsContainer = styled.View``;
+
+const NoPostsContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
 
 const PostContainer = styled.View``;
