@@ -10,9 +10,10 @@ const days = 3;
 
 type TProps = {
   post: TPost;
+  showSaveListing?: boolean;
 };
 
-export const Post: FC<TProps> = ({ post }) => {
+export const Post: FC<TProps> = ({ post, showSaveListing = true }) => {
   const { image, title, bed, bedroom, newPrice, type, id } = post;
   const navigation = useNavigation();
   const { addPost } = useSavedPostsContext();
@@ -39,9 +40,11 @@ export const Post: FC<TProps> = ({ post }) => {
         <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
           ${newPrice * days} total
         </SText>
-        <SavePostButton onPress={() => addPost(post)}>
-          <SText>Save Listing</SText>
-        </SavePostButton>
+        {showSaveListing && (
+          <SavePostButton onPress={() => addPost(post)}>
+            <SText>Save Listing</SText>
+          </SavePostButton>
+        )}
       </SaveListingContainer>
     </SContainer>
   );

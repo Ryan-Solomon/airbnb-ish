@@ -6,6 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Router } from './ExploreNavigator';
 import { ProfileScreen } from '../screens/Profile';
+import SavedPostsScreen from './../screens/SavedPostsScreen';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -27,7 +28,7 @@ export const HomeTabNavigator = () => {
       />
       <Tab.Screen
         name='Saved'
-        component={HomeScreen}
+        component={SavedPostsScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='hearto' size={24} color={color} />
