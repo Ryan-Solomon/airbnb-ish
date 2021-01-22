@@ -4,6 +4,7 @@ import { TPost } from '../types/appTypes';
 import { Image, StyleSheet, useWindowDimensions } from 'react-native';
 import { SText } from '../styles/text';
 import { useNavigation } from '@react-navigation/native';
+import { useSavedPostsContext } from '../context/savedPostsContext';
 
 type TProps = {
   post: TPost;
@@ -13,6 +14,7 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
   const { image, title, bed, bedroom, newPrice, totalPrice, type, id } = post;
   const windowWidth = useWindowDimensions().width;
   const navigation = useNavigation();
+  const { addPost } = useSavedPostsContext();
 
   return (
     <SContainer
@@ -33,6 +35,9 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
         <SText margin='2px 0px' fontColor='#d3d3d3'>
           ${newPrice}/night
         </SText>
+        <SavePostButton onPress={() => addPost(post)}>
+          <SText fontSize='12px'>Save Listing</SText>
+        </SavePostButton>
       </ContentContainer>
     </SContainer>
   );
@@ -74,4 +79,13 @@ const ContentContainer = styled.View`
   /* flex: 1; */
   padding: 10px 15px;
   justify-content: space-evenly;
+`;
+
+const SavePostButton = styled.TouchableOpacity`
+  background: #747474;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-top: 2px;
 `;
