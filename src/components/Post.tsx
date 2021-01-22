@@ -33,9 +33,14 @@ export const Post: FC<TProps> = ({ post }) => {
       <SText margin='2px 0px' fontColor='#c1c1c1'>
         ${newPrice}/night
       </SText>
-      <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
-        ${newPrice * days} total
-      </SText>
+      <SaveListingContainer>
+        <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
+          ${newPrice * days} total
+        </SText>
+        <SavePostButton>
+          <SText>Save Listing</SText>
+        </SavePostButton>
+      </SaveListingContainer>
     </SContainer>
   );
 };
@@ -52,4 +57,19 @@ const styles = StyleSheet.create({
 
 const SContainer = styled.TouchableOpacity`
   padding: 20px;
+`;
+
+const SaveListingContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const SavePostButton = styled.TouchableOpacity`
+  background: #444;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border-radius: 4px;
 `;
