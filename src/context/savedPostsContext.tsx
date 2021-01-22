@@ -13,7 +13,24 @@ const initialContext: SavedPostsContext = {};
 
 const SavedPostsContext = createContext(initialContext);
 
-function postReducer(state, action) {
+type TPostAction =
+  | {
+      type: 'ADD_POST';
+      payload: TPost;
+    }
+  | {
+      type: 'REMOVE_POST';
+      payload: string;
+    }
+  | {
+      type: 'CLEAR_POSTS';
+    };
+
+type TPostState = {
+  posts: TPost[];
+};
+
+function postReducer(state: TPostState, action: TPostAction) {
   switch (action.type) {
     case 'ADD_POST':
       return { posts: [...state.posts, action.payload] };
@@ -24,6 +41,7 @@ function postReducer(state, action) {
     case 'CLEAR_POSTS':
       return { posts: [] };
     default:
+      //   @ts-ignore
       throw new Error(`Action type ${action.type} is not supported`);
   }
 }
