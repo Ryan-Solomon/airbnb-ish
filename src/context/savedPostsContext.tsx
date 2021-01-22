@@ -67,6 +67,10 @@ export const SavedPostsContextProvider: FC<ReactNode> = ({ children }) => {
     dispatch({ type: 'ADD_POST', payload: post });
   };
 
+  const removePost = (id: string) => {
+    dispatch({ type: 'REMOVE_POST', payload: id });
+  };
+
   return (
     <SavedPostsContext.Provider value={{}}>
       {children}
