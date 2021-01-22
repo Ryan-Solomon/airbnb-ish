@@ -71,8 +71,19 @@ export const SavedPostsContextProvider: FC<ReactNode> = ({ children }) => {
     dispatch({ type: 'REMOVE_POST', payload: id });
   };
 
+  const clearPosts = () => {
+    dispatch({ type: 'CLEAR_POSTS' });
+  };
+
   return (
-    <SavedPostsContext.Provider value={{}}>
+    <SavedPostsContext.Provider
+      value={{
+        posts: state.posts,
+        addPost,
+        removePost,
+        clearPosts,
+      }}
+    >
       {children}
     </SavedPostsContext.Provider>
   );
