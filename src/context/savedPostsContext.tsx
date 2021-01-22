@@ -61,7 +61,11 @@ const initialPosts: TPostState = {
 };
 
 export const SavedPostsContextProvider: FC<ReactNode> = ({ children }) => {
-  const [posts, setPosts] = useReducer(postReducer, initialPosts);
+  const [state, dispatch] = useReducer(postReducer, initialPosts);
+
+  const addPost = (post: TPost) => {
+    dispatch({ type: 'ADD_POST', payload: post });
+  };
 
   return (
     <SavedPostsContext.Provider value={{}}>
