@@ -43,6 +43,13 @@ type TPostState = {
 function postReducer(state: TPostState, action: TPostAction) {
   switch (action.type) {
     case 'ADD_POST':
+      let alreadyInState = false;
+      state.posts.forEach((post) => {
+        if (post.id === action.payload.id) {
+          alreadyInState = true;
+        }
+      });
+      if (alreadyInState) return { posts: [...state.posts] };
       return { posts: [...state.posts, action.payload] };
     case 'REMOVE_POST':
       return {
