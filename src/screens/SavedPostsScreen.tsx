@@ -6,7 +6,7 @@ import { Post } from '../components/Post';
 import { SText } from '../styles/text';
 
 export default function SavedPostsScreen() {
-  const { posts, removePost } = useSavedPostsContext();
+  const { posts, removePost, clearPosts } = useSavedPostsContext();
 
   if (posts.length === 0) {
     return (
@@ -32,6 +32,9 @@ export default function SavedPostsScreen() {
           );
         }}
       />
+      <ClearListings onPress={clearPosts}>
+        <SText>Clear Listings</SText>
+      </ClearListings>
     </SavedPostsContainer>
   );
 }
@@ -59,4 +62,10 @@ const RemoveListing = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   width: 200px;
+`;
+
+const ClearListings = styled.TouchableOpacity`
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 `;
