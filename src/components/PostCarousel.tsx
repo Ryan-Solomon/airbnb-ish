@@ -11,7 +11,7 @@ type TProps = {
 };
 
 export const PostCarousel: FC<TProps> = ({ post }) => {
-  const { image, title, bed, bedroom, newPrice, totalPrice, type, id } = post;
+  const { image, bed, bedroom, newPrice, id } = post;
   const windowWidth = useWindowDimensions().width;
   const navigation = useNavigation();
   const { addPost } = useSavedPostsContext();

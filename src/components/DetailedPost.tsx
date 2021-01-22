@@ -3,6 +3,7 @@ import { TPost } from '../types/appTypes';
 import styled from 'styled-components/native';
 import { StyleSheet, Image } from 'react-native';
 import { SText } from '../styles/text';
+import { useSavedPostsContext } from '../context/savedPostsContext';
 
 type Props = {
   post: TPost;
@@ -10,6 +11,7 @@ type Props = {
 
 export const DetailedPost: FC<Props> = ({ post }) => {
   const { image, title, bed, bedroom, newPrice, type, id, description } = post;
+  const { addPost } = useSavedPostsContext();
 
   return (
     <SContainer>
@@ -26,6 +28,9 @@ export const DetailedPost: FC<Props> = ({ post }) => {
       <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
         {description}
       </SText>
+      <SavePostButton onPress={() => addPost(post)}>
+        <SText fontSize='16px'>Save Listing</SText>
+      </SavePostButton>
     </SContainer>
   );
 };
@@ -42,4 +47,13 @@ const styles = StyleSheet.create({
 
 const SContainer = styled.TouchableOpacity`
   padding: 20px;
+`;
+
+const SavePostButton = styled.TouchableOpacity`
+  background: #747474;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-top: 16px;
 `;
