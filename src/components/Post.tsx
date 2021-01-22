@@ -4,6 +4,7 @@ import { TPost } from '../types/appTypes';
 import { Image, StyleSheet } from 'react-native';
 import { SText } from '../styles/text';
 import { useNavigation } from '@react-navigation/native';
+import { useSavedPostsContext } from '../context/savedPostsContext';
 
 const days = 3;
 
@@ -14,6 +15,7 @@ type TProps = {
 export const Post: FC<TProps> = ({ post }) => {
   const { image, title, bed, bedroom, newPrice, type, id } = post;
   const navigation = useNavigation();
+  const { addPost } = useSavedPostsContext();
 
   const navigateToDetailedPost = () => {
     navigation.navigate('DetailedPost', {
@@ -37,7 +39,7 @@ export const Post: FC<TProps> = ({ post }) => {
         <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
           ${newPrice * days} total
         </SText>
-        <SavePostButton>
+        <SavePostButton onPress={() => addPost(post)}>
           <SText>Save Listing</SText>
         </SavePostButton>
       </SaveListingContainer>
