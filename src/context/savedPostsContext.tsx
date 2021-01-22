@@ -7,9 +7,19 @@ import React, {
 } from 'react';
 import { TPost } from '../types/appTypes';
 
-type SavedPostsContext = {};
+type SavedPostsContext = {
+  posts: TPost[];
+  addPost: (p: TPost) => void;
+  removePost: (id: string) => void;
+  clearPosts: () => void;
+};
 
-const initialContext: SavedPostsContext = {};
+const initialContext: SavedPostsContext = {
+  posts: [],
+  addPost: (p: TPost) => null,
+  removePost: (id: string) => null,
+  clearPosts: () => null,
+};
 
 const SavedPostsContext = createContext(initialContext);
 
