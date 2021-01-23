@@ -11,7 +11,7 @@ export default function SavedPostsScreen() {
   if (posts.length === 0) {
     return (
       <NoPostsContainer>
-        <SText>You have no saved posts</SText>
+        <SText>You have no saved listings</SText>
       </NoPostsContainer>
     );
   }
