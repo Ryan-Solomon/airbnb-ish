@@ -11,6 +11,7 @@ import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
 import { ContextProvider } from './src/context/AppContext';
 import { SavedPostsContextProvider } from './src/context/savedPostsContext';
+import MyTheme from './src/theme';
 Amplify.configure(config);
 
 function App() {
@@ -25,6 +26,6 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, false, [], null, MyTheme);
 
 const SContainer = styled.View``;
