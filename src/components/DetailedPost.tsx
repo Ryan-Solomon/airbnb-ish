@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { TPost } from '../types/appTypes';
 import styled from 'styled-components/native';
 import { StyleSheet, Image } from 'react-native';
@@ -12,6 +12,14 @@ type Props = {
 export const DetailedPost: FC<Props> = ({ post }) => {
   const { image, title, bed, bedroom, newPrice, type, id, description } = post;
   const { addPost } = useSavedPostsContext();
+  const [saved, setSaved] = useState(false);
+
+  const setSavedPost = () => {
+    setSaved(true);
+    setTimeout(() => {
+      setSaved(false);
+    }, 2000);
+  };
 
   return (
     <SContainer>
@@ -29,7 +37,11 @@ export const DetailedPost: FC<Props> = ({ post }) => {
         {description}
       </SText>
       <SavePostButton onPress={() => addPost(post)}>
-        <SText fontSize='16px'>Save Listing</SText>
+        {saved ? (
+          <SText fontSize='16px'>Saved!</SText>
+        ) : (
+          <SText fontSize='16px'>Save Listing</SText>
+        )}
       </SavePostButton>
     </SContainer>
   );
