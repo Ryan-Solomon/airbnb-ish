@@ -43,7 +43,12 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
         <SText margin='2px 0px' fontColor='#d3d3d3'>
           ${newPrice}/night
         </SText>
-        <SavePostButton onPress={() => addPost(post)}>
+        <SavePostButton
+          onPress={() => {
+            addPost(post);
+            setSaved(true);
+          }}
+        >
           {saved ? (
             <SText fontSize='12px'>Saved!</SText>
           ) : (

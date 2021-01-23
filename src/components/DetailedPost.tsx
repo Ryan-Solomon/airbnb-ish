@@ -36,7 +36,12 @@ export const DetailedPost: FC<Props> = ({ post }) => {
       <SText fontSize='20px' margin='2px 0px' fontColor='#f5f5f5'>
         {description}
       </SText>
-      <SavePostButton onPress={() => addPost(post)}>
+      <SavePostButton
+        onPress={() => {
+          addPost(post);
+          setSaved(true);
+        }}
+      >
         {saved ? (
           <SText fontSize='16px'>Saved!</SText>
         ) : (
