@@ -36,24 +36,6 @@ export const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='AirBnB'
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name='airbnb' size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name='Messages'
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Feather name='message-square' size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name='Profile'
         component={ProfileScreen}
         options={{
@@ -69,7 +51,5 @@ export const HomeTabNavigator = () => {
 type RootTabParamList = {
   Explore: undefined;
   Saved: undefined;
-  AirBnB: undefined;
-  Messages: undefined;
   Profile: undefined;
 };

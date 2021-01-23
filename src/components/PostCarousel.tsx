@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components/native';
 import { TPost } from '../types/appTypes';
 import { Image, StyleSheet, useWindowDimensions } from 'react-native';
@@ -15,6 +15,14 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
   const windowWidth = useWindowDimensions().width;
   const navigation = useNavigation();
   const { addPost } = useSavedPostsContext();
+  const [saved, setSaved] = useState(false);
+
+  const setSavedPost = () => {
+    setSaved(true);
+    setTimeout(() => {
+      setSaved(false);
+    }, 2000);
+  };
 
   return (
     <SContainer
@@ -36,7 +44,11 @@ export const PostCarousel: FC<TProps> = ({ post }) => {
           ${newPrice}/night
         </SText>
         <SavePostButton onPress={() => addPost(post)}>
-          <SText fontSize='12px'>Save Listing</SText>
+          {saved ? (
+            <SText fontSize='12px'>Saved!</SText>
+          ) : (
+            <SText fontSize='12px'>Save Listing</SText>
+          )}
         </SavePostButton>
       </ContentContainer>
     </SContainer>
